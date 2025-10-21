@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
@@ -12,14 +10,12 @@ services:
       - postgres_flask
     ports:
       - "5000:5000"
-    volumes:
-      - ./backend:/app
-
+      
   frontend:
     build: ./frontend
     container_name: react_frontend
     environment:
-      - VITE_API_URL=http://localhost:5000
+      VITE_API_URL: http://backend:5000
     depends_on:
       - backend
     ports:
@@ -39,8 +35,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-    - postgres_data:/var/lib/postgresql/data
-
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
