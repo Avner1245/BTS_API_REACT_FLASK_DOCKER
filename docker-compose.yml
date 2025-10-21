@@ -2,9 +2,31 @@ version: '3.8'
 
 services:
   backend:
+    build: ./backend
+    container_name: flask_backend
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: development
+      DATABASE_URL: postgresql://user:userpassword@postgres_flask:5432/flaskdb
+    depends_on:
+      - postgres_flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
 
   frontend:
- 
+    build: ./frontend
+    container_name: react_frontend
+    environment:
+      - VITE_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
 
   postgres_flask:
     image: postgres:latest
