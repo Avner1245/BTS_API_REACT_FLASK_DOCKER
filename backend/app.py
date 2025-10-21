@@ -26,7 +26,7 @@ def create_app():
         init_roles()
 
     # ROUTE TEST
-    @app.route("/")
+    @app.route("/test")
     def home():
         return {"message": "Backend sur le backend Flask !"}
 

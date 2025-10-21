@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   backend:
     build: ./backend
@@ -10,6 +12,9 @@ services:
       - postgres_flask
     ports:
       - "5000:5000"
+    volumes:
+      - ./backend:/app
+    restart: always
       
   frontend:
     build: ./frontend
@@ -23,6 +28,7 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
+    restart: always
 
   postgres_flask:
     image: postgres:latest
