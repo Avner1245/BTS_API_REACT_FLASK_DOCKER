@@ -1,8 +1,9 @@
-flask
-flask-cors
-flask-sqlalchemy
-flask-bcrypt
-flask-jwt-extended
+Flask
+Flask-Cors
+Flask-SQLAlchemy
+Flask-Bcrypt
+Flask-JWT-Extended
 python-dotenv
 psycopg2-binary
-
+pymysql
+cryptography

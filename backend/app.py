@@ -20,15 +20,15 @@ def create_app():
     register_routes(app)
 
     # Register startup logic
-    @app.before_first_request
+    @app.before_request
     def create_tables():
         db.create_all()
         init_roles()
 
     # ROUTE TEST
-    @app.route("/test")
-    def home():
-        return {"message": "Backend sur le backend Flask !"}
+    @app.route("/api/test")
+    def test():
+        return {"message": "Backend Flask fonctionne !"}
 
 
     return app

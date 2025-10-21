@@ -14,7 +14,6 @@ services:
       - "5000:5000"
     volumes:
       - ./backend:/app
-    restart: always
       
   frontend:
     build: ./frontend
