@@ -25,6 +25,12 @@ def create_app():
         db.create_all()
         init_roles()
 
+    # ROUTE TEST
+    @app.route("/api/test")
+    def test():
+        return {"message": "Backend Flask fonctionne !"}
+
+
     return app
 
 app = create_app()
